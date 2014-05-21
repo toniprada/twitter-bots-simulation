@@ -2,6 +2,7 @@ package com.toniprada.pfc;
 
 import com.toniprada.pfc.classifier.Classifier;
 import com.toniprada.pfc.twitter.Account;
+import com.toniprada.pfc.twitter.Relation;
 import sim.engine.SimState;
 import sim.engine.Steppable;
 import sim.field.continuous.Continuous2D;
@@ -52,13 +53,21 @@ public class Student implements Steppable {
         };*/
 
         if (studentsState.schedule.getSteps()%1000 == 0) {
-            isHuman = classifier.classify(account);
+            this.isHuman = classifier.classify(account);
         }
 
         Bag students = studentsState.network.getAllNodes();
-        if (account.shouldMakeFollow()) {
+        if (account.shouldFollow()) {
             Object studentB = students.get(studentsState.getRandom().nextInt(studentsState.numStudents));
             studentsState.network.addEdge(this, studentB, 0.01);
+
+            Student otherStudent = ((Student)studentB);
+            account.addFriend(new Relation(otherStudent.getAccount()));
+            otherStudent.getAccount().addFollower(new Relation(account));
+        }
+
+        if (account.shouldTweet()) {
+            account.tweet();
         }
     }
 
@@ -66,7 +75,12 @@ public class Student implements Steppable {
 
     @Override
     public String toString() {
-        return "[" + System.identityHashCode(this) + "] + name:" + account.getProfile().getName();
+        //return "[" + System.identityHashCode(this) + "] + name:" + account.getProfile().getName();
+        return "@" + account.getProfile().getScreenName() + " " + account.getProfile().getFriendsCount() + "|" + account.getProfile().getFollowersCount();
+    }
+
+    public Account getAccount() {
+        return account;
     }
 
 

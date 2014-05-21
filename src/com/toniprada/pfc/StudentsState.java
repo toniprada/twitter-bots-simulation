@@ -20,7 +20,7 @@ public class StudentsState extends SimState {
     public boolean isTempering() { return tempering; }
     public void setTempering(boolean val) { tempering = val; }
 
-    public int numStudents = 50;
+    public int numStudents = 100;
     double forceToSchoolMultiplier = 0.01;
     double randomMultiplier = 0.1;
 

@@ -104,7 +104,7 @@ public class StudentsWithUI extends GUIState {
     @Override
     public void init(Controller c) {
         super.init(c);
-        display = new Display2D(600,600,this);
+        display = new Display2D(800,800,this);
         display.setClipping(false);
         displayFrame = display.createFrame();
         displayFrame.setTitle("Schoolyard Display");
