@@ -1,14 +1,20 @@
 package com.toniprada.pfc;
 
-import sim.portrayal.network.*;
-import sim.engine.*;
-import sim.display.*;
+import sim.display.Console;
+import sim.display.Controller;
+import sim.display.Display2D;
+import sim.display.GUIState;
+import sim.engine.SimState;
+import sim.portrayal.DrawInfo2D;
+import sim.portrayal.Inspector;
 import sim.portrayal.continuous.ContinuousPortrayal2D;
+import sim.portrayal.network.NetworkPortrayal2D;
+import sim.portrayal.network.SimpleEdgePortrayal2D;
+import sim.portrayal.network.SpatialNetwork2D;
 import sim.portrayal.simple.CircledPortrayal2D;
 import sim.portrayal.simple.LabelledPortrayal2D;
 import sim.portrayal.simple.MovablePortrayal2D;
 import sim.portrayal.simple.OvalPortrayal2D;
-import sim.portrayal.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +51,8 @@ public class BotsWithUI extends GUIState {
 
     @Override
     public Inspector getInspector() {
-        Inspector i = super.getInspector(); i.setVolatile(true);
+        Inspector i = super.getInspector();
+        i.setVolatile(true);
         return i;
     }
 

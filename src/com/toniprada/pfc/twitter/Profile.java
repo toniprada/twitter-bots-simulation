@@ -30,14 +30,11 @@ public class Profile implements Serializable {
         chooseId();
         chooseNames();
         chooseBio();
-        chooseUrl(); // TODO check if the format is right
-        this.followersCount = 0; // TODO
-        this.friendsCount = 0; // TODO
-        // TODO hay que crear una linea temporal, cuanto cada step? esto para velocidad de twitteo
-        // FIXME esto es un hack
+        chooseUrl();
+        this.followersCount = 0;
+        this.friendsCount = 0;
         chooseCreatedAt();
-        this.statusesCount = 0; // TODO
-        // FIXME mirar si me he dejado alguna...
+        this.statusesCount = 0;
     }
 
     private void chooseId() {

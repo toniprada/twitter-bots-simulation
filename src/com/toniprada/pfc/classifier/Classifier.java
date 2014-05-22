@@ -53,6 +53,9 @@ public class Classifier {
 
             Result result = gson.fromJson(response.toString(), Result.class);
             boolean isHuman = result.isResult();
+            if (isHuman) {
+                System.out.println(data);
+            }
             return isHuman;
        } catch (MalformedURLException e) {
             e.printStackTrace();
